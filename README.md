@@ -1,4 +1,4 @@
--Dexec.cleanupDaemonThreads=false# OWL-API Jena Integration
+# OWLAPI-Jena Integration
 
 This repository contains an exemplary application integrating OWLAPI and Jena libraries. In particular the application:
 1. loads an ontology specified in the configuration file (available at ``src/main/resources/config.properties``);
