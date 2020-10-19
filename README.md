@@ -1,4 +1,4 @@
-# OWL-API Jena Integration
+-Dexec.cleanupDaemonThreads=false# OWL-API Jena Integration
 
 This repository contains an exemplary application integrating OWLAPI and Jena libraries. In particular the application:
 1. loads an ontology specified in the configuration file (available at ``src/main/resources/config.properties``);
@@ -9,7 +9,7 @@ This repository contains an exemplary application integrating OWLAPI and Jena li
 
 ### Installation and usage
 
-You can install (i.e. ``mvn clean install``) and run (i.e. ``mvn exec:java  -Dexec.mainClass="it.cnr.istc.stlab.App" -Dexec.args="file:///path/to/the/input/ontology.owl"`` ) the application using maven.
+You can install (i.e. ``mvn clean install``) and run (i.e. ``mvn exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass="it.cnr.istc.stlab.App" -Dexec.args="file:///path/to/the/input/ontology.owl"`` ) the application using maven.
 
 ### License
 
