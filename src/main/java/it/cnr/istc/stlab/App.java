@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import org.apache.jena.graph.Triple;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.ResultSetFormatter;
@@ -33,7 +32,7 @@ public class App {
 
 	private static Logger logger = LoggerFactory.getLogger(App.class);
 
-	private static boolean checkConsistency(String ontologyIRI)
+	private static void checkConsistency(String ontologyIRI, String outfile)
 			throws OWLOntologyCreationException, OWLOntologyStorageException, FileNotFoundException {
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -56,8 +55,6 @@ public class App {
 		gen.fillOntology(factory, newOntology);
 
 		Ontology ontOntology = ontManager.copyOntology(newOntology, OntologyCopy.DEEP);
-		// Print all triples from the inner graph:
-//		ontOntology.asGraphModel().getGraph().find(Triple.ANY).forEachRemaining(System.out::println);
 
 		Model model = ((com.github.owlcs.ontapi.Ontology) ontOntology).asGraphModel();
 
@@ -65,16 +62,13 @@ public class App {
 		QueryExecution qexec = QueryExecutionFactory.create(query, model);
 		System.out.println(ResultSetFormatter.asText(qexec.execSelect()));
 
-		manager.saveOntology(newOntology, new FileOutputStream(new File("testOut.owl")));
+		manager.saveOntology(newOntology, new FileOutputStream(new File(outfile)));
 
-		return reasoner.isConsistent();
 	}
 
 	public static void main(String[] args)
 			throws OWLOntologyStorageException, FileNotFoundException, OWLOntologyCreationException {
-		String ontologyIRI = args[0];
-
-		logger.info("" + checkConsistency(ontologyIRI));
+		checkConsistency(args[0], args[1]);
 
 	}
 }
