@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-import org.apache.commons.configuration2.Configuration;
-import org.apache.commons.configuration2.builder.fluent.Configurations;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -31,7 +28,6 @@ import org.slf4j.LoggerFactory;
 import com.github.owlcs.ontapi.OntManagers;
 import com.github.owlcs.ontapi.Ontology;
 import com.github.owlcs.ontapi.OntologyManager;
-
 
 public class App {
 
@@ -59,10 +55,9 @@ public class App {
 		OWLOntology newOntology = manager.createOntology();
 		gen.fillOntology(factory, newOntology);
 
-
-	    Ontology ontOntology = ontManager.copyOntology(newOntology, OntologyCopy.DEEP);
-	    // Print all triples from the inner graph:
-	    ontOntology.asGraphModel().getGraph().find(Triple.ANY).forEachRemaining(System.out::println);
+		Ontology ontOntology = ontManager.copyOntology(newOntology, OntologyCopy.DEEP);
+		// Print all triples from the inner graph:
+		ontOntology.asGraphModel().getGraph().find(Triple.ANY).forEachRemaining(System.out::println);
 
 		Model model = ((com.github.owlcs.ontapi.Ontology) ontOntology).asGraphModel();
 
@@ -75,18 +70,11 @@ public class App {
 		return reasoner.isConsistent();
 	}
 
-	public static void main(String[] args) throws OWLOntologyStorageException, FileNotFoundException {
-		try {
-			Configurations configs = new Configurations();
-			Configuration config = configs.properties("config.properties");
-			logger.info(config.getString("prova"));
+	public static void main(String[] args)
+			throws OWLOntologyStorageException, FileNotFoundException, OWLOntologyCreationException {
+		String ontologyIRI = args[0];
 
-			String ontologyIRI = "file:///Users/lgu/Desktop/testIn.owl";
+		logger.info("" + checkConsistency(ontologyIRI));
 
-			logger.info("" + checkConsistency(ontologyIRI));
-
-		} catch (ConfigurationException | OWLOntologyCreationException e) {
-			e.printStackTrace();
-		}
 	}
 }
