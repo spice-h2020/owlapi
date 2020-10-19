@@ -57,7 +57,7 @@ public class App {
 
 		Ontology ontOntology = ontManager.copyOntology(newOntology, OntologyCopy.DEEP);
 		// Print all triples from the inner graph:
-		ontOntology.asGraphModel().getGraph().find(Triple.ANY).forEachRemaining(System.out::println);
+//		ontOntology.asGraphModel().getGraph().find(Triple.ANY).forEachRemaining(System.out::println);
 
 		Model model = ((com.github.owlcs.ontapi.Ontology) ontOntology).asGraphModel();
 
