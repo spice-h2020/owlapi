@@ -32,7 +32,7 @@ public class App {
 
 	private static Logger logger = LoggerFactory.getLogger(App.class);
 
-	private static void checkConsistency(String ontologyIRI, String outfile)
+	private static void checkConsistency(String ontologyIRI)
 			throws OWLOntologyCreationException, OWLOntologyStorageException, FileNotFoundException {
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -62,13 +62,13 @@ public class App {
 		QueryExecution qexec = QueryExecutionFactory.create(query, model);
 		System.out.println(ResultSetFormatter.asText(qexec.execSelect()));
 
-		manager.saveOntology(newOntology, new FileOutputStream(new File(outfile)));
+//		manager.saveOntology(newOntology, new FileOutputStream(new File(outfile)));
 
 	}
 
 	public static void main(String[] args)
 			throws OWLOntologyStorageException, FileNotFoundException, OWLOntologyCreationException {
-		checkConsistency(args[0], args[1]);
+		checkConsistency(args[0]);
 
 	}
 }
