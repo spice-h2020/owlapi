@@ -9,12 +9,14 @@ This repository contains an exemplary application integrating OWLAPI and Jena li
 
 ### Installation and usage
 
-You can install (i.e. ``mvn clean install``) and run (i.e. ``mvn exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass="it.cnr.istc.stlab.App" -Dexec.args="file:///path/to/the/input/ontology.owl"`` ) the application using maven.
+You can install (i.e. ``mvn clean install``) and run (i.e. ``mvn exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass="it.cnr.istc.stlab.App" -Dexec.args="[ONTOLOGY IRI]"`` ) the application using maven.
 
 You can also use this tool to derive the inferred version of any ontology using HermiT reasoner. To do so:
 
 1. Compile the project ``mvn clean install``
-2. Run the main in  GetInferredOntology class ``mvn exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass="it.cnr.istc.stlab.GetInferredOntology" -Dexec.args="file:///path/to/the/input/ontology.owl file:///path/to/the/output/ontology.ttl"`` (the inferred ontology will be written in Turtle format).
+2. Run the main in  GetInferredOntology class ``mvn exec:java -Dexec.cleanupDaemonThreads=false -Dexec.mainClass="it.cnr.istc.stlab.GetInferredOntology" -Dexec.args="[ONTOLOGY IRI] /path/to/the/output/ontology.ttl"`` (the inferred ontology will be written in Turtle format).
+
+Note: [ONTOLOGY IRI] can be either local paths (e.g. file:///path/to/the/input/ontology.owl) or URLs (e.g.http://www.ontologydesignpatterns.org/ont/dul/DUL.owl)
 
 ### License
 
