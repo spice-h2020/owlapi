@@ -1,7 +1,7 @@
 # OWLAPI-Jena Integration
 
 This repository contains an exemplary application integrating OWLAPI and Jena libraries. In particular the application:
-1. loads an ontology specified in the configuration file (available at ``src/main/resources/config.properties``);
+1. loads an ontology passed as argument;
 2. loads the ontology imported using ``owl:imports`` assertions;
 3. infers all implicit assertions using HermiT reasoner;
 4. transforms the inferred ontology into a Jena model;
