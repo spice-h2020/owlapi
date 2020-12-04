@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import org.apache.jena.rdf.model.Model;
+import org.semanticweb.HermiT.Configuration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLDataFactory;
@@ -38,8 +39,15 @@ public class GetInferredOntology {
 
 		ConsoleProgressMonitor progressMonitor = new ConsoleProgressMonitor();
 		OWLReasonerConfiguration reasonerConfiguration = new SimpleConfiguration(progressMonitor);
+		
+		Configuration c = new Configuration();
+		c.ignoreUnsupportedDatatypes = true;
+		
 		OWLReasoner reasoner = new org.semanticweb.HermiT.ReasonerFactory().createReasoner(ontology,
-				reasonerConfiguration);
+				c);
+		
+		
+
 
 		OWLDataFactory factory = manager.getOWLDataFactory();
 		InferredOntologyGenerator gen = new InferredOntologyGenerator(reasoner);
@@ -49,6 +57,7 @@ public class GetInferredOntology {
 		Ontology ontOntology = ontManager.copyOntology(newOntology, OntologyCopy.DEEP);
 
 		Model model = ((com.github.owlcs.ontapi.Ontology) ontOntology).asGraphModel();
+		model.add(((com.github.owlcs.ontapi.Ontology) ontology).asGraphModel());
 
 		logger.info("Saving inferred ontology in {} in Turtle format", filepath);
 		model.write(new FileOutputStream(new File(filepath)), "TTL");
