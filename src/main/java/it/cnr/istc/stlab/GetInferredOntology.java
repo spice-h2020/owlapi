@@ -14,10 +14,7 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.model.parameters.OntologyCopy;
-import org.semanticweb.owlapi.reasoner.ConsoleProgressMonitor;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.semanticweb.owlapi.util.InferredOntologyGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,17 +34,13 @@ public class GetInferredOntology {
 		OWLOntology ontology = manager.loadOntology(IRI.create(ontologyIRI));
 		OntologyManager ontManager = OntManagers.createONT();
 
-		ConsoleProgressMonitor progressMonitor = new ConsoleProgressMonitor();
-		OWLReasonerConfiguration reasonerConfiguration = new SimpleConfiguration(progressMonitor);
-		
+//		ConsoleProgressMonitor progressMonitor = new ConsoleProgressMonitor();
+//		OWLReasonerConfiguration reasonerConfiguration = new SimpleConfiguration(progressMonitor);
+
 		Configuration c = new Configuration();
 		c.ignoreUnsupportedDatatypes = true;
-		
-		OWLReasoner reasoner = new org.semanticweb.HermiT.ReasonerFactory().createReasoner(ontology,
-				c);
-		
-		
 
+		OWLReasoner reasoner = new org.semanticweb.HermiT.ReasonerFactory().createReasoner(ontology, c);
 
 		OWLDataFactory factory = manager.getOWLDataFactory();
 		InferredOntologyGenerator gen = new InferredOntologyGenerator(reasoner);
@@ -55,9 +48,12 @@ public class GetInferredOntology {
 		gen.fillOntology(factory, newOntology);
 
 		Ontology ontOntology = ontManager.copyOntology(newOntology, OntologyCopy.DEEP);
+		ontology.axioms().forEach(a->{
+			ontOntology.addAxiom(a);
+		});
 
 		Model model = ((com.github.owlcs.ontapi.Ontology) ontOntology).asGraphModel();
-		model.add(((com.github.owlcs.ontapi.Ontology) ontology).asGraphModel());
+//		model.add(((com.github.owlcs.ontapi.Ontology) ontology).asGraphModel());
 
 		logger.info("Saving inferred ontology in {} in Turtle format", filepath);
 		model.write(new FileOutputStream(new File(filepath)), "TTL");
