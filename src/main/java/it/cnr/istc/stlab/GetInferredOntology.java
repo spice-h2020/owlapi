@@ -32,7 +32,7 @@ public class GetInferredOntology {
 		logger.info("Loading {}", ontologyIRI);
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntology(IRI.create(ontologyIRI));
-		OntologyManager ontManager = OntManagers.createONT();
+		OntologyManager ontManager = OntManagers.createManager();
 
 //		ConsoleProgressMonitor progressMonitor = new ConsoleProgressMonitor();
 //		OWLReasonerConfiguration reasonerConfiguration = new SimpleConfiguration(progressMonitor);

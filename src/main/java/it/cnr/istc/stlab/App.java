@@ -35,7 +35,7 @@ public class App {
 
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLOntology ontology = manager.loadOntology(IRI.create(ontologyIRI));
-		OntologyManager ontManager = OntManagers.createONT();
+		OntologyManager ontManager = OntManagers.createManager();
 
 		ontology.importsClosure().forEach(ont -> {
 			logger.trace("Importing " + ont.getOntologyID().getOntologyIRI().toString());
