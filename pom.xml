@@ -114,6 +114,8 @@
 			<artifactId>owlapi-parsers</artifactId>
 			<version>${version.owlapi}</version>
 		</dependency>
+		
+		
 
 		<!-- dependency> <groupId>net.sourceforge.owlapi</groupId> <artifactId>org.semanticweb.hermit</artifactId> 
 			<version>1.4.5.519</version> </dependency -->
