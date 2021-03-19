@@ -121,28 +121,28 @@ public class GetInferredOntology {
 	public static void main(String[] args)
 			throws OWLOntologyStorageException, FileNotFoundException, OWLOntologyCreationException {
 		Map<String, String> iriMap = new HashMap<>();
-		iriMap.put("https://w3id.org/italia/onto/l0",
-				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/l0/latest/l0-AP_IT.rdf");
-		iriMap.put("https://w3id.org/italia/onto/TI/0.6",
-				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/TI/latest/TI-AP_IT.rdf");
-		iriMap.put("https://w3id.org/italia/onto/TI",
-				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/TI/latest/TI-AP_IT.rdf");
-		iriMap.put("https://w3id.org/arco/ontology/cataloguing-campaign",
-				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/cataloguing-campaign/cataloguing-campaign.owl");
-		iriMap.put("https://w3id.org/italia/onto/COV",
-				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/COV/v0.11/COV-AP_IT.rdf");
-		iriMap.put("https://w3id.org/italia/onto/COV/0.11",
-				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/COV/v0.11/COV-AP_IT.rdf");
-		iriMap.put("https://w3id.org/italia/onto/MU",
-				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/MU/latest/MU-AP_IT.rdf");
-		iriMap.put("https://w3id.org/arco/ontology/arco/1.2",
-				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/arco/1.2/arco.owl");
-		iriMap.put("https://w3id.org/arco/ontology/catalogue/1.2",
-				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/catalogue/1.2/catalogue.owl");
-		iriMap.put("https://w3id.org/arco/ontology/cataloguing-campaign/0.1",
-				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/cataloguing-campaign/cataloguing-campaign.owl");
-		iriMap.put("https://w3id.org/arco/ontology/cataloguing-campaign",
-				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/cataloguing-campaign/cataloguing-campaign.owl");
+//		iriMap.put("https://w3id.org/italia/onto/l0",
+//				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/l0/latest/l0-AP_IT.rdf");
+//		iriMap.put("https://w3id.org/italia/onto/TI/0.6",
+//				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/TI/latest/TI-AP_IT.rdf");
+//		iriMap.put("https://w3id.org/italia/onto/TI",
+//				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/TI/latest/TI-AP_IT.rdf");
+//		iriMap.put("https://w3id.org/arco/ontology/cataloguing-campaign",
+//				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/cataloguing-campaign/cataloguing-campaign.owl");
+//		iriMap.put("https://w3id.org/italia/onto/COV",
+//				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/COV/v0.11/COV-AP_IT.rdf");
+//		iriMap.put("https://w3id.org/italia/onto/COV/0.11",
+//				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/COV/v0.11/COV-AP_IT.rdf");
+//		iriMap.put("https://w3id.org/italia/onto/MU",
+//				"/Users/lgu/workspace/others/daf-ontologie-vocabolari-controllati/Ontologie/MU/latest/MU-AP_IT.rdf");
+//		iriMap.put("https://w3id.org/arco/ontology/arco/1.2",
+//				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/arco/1.2/arco.owl");
+//		iriMap.put("https://w3id.org/arco/ontology/catalogue/1.2",
+//				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/catalogue/1.2/catalogue.owl");
+//		iriMap.put("https://w3id.org/arco/ontology/cataloguing-campaign/0.1",
+//				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/cataloguing-campaign/cataloguing-campaign.owl");
+//		iriMap.put("https://w3id.org/arco/ontology/cataloguing-campaign",
+//				"/Users/lgu/workspace/arco/ArCo/ArCo-release/ontologie/cataloguing-campaign/cataloguing-campaign.owl");
 		getInferredModel(args[0], args[1], iriMap);
 
 	}
